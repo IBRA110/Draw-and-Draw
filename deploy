@@ -4,7 +4,9 @@ cd backend/
 python3 -m venv env
 . ./env/bin/activate
 pip3 install -r requirenment.txt
-cd ../../frontend/project/
+cd project/
+python3 manage.py migrate
+cd ../../../frontend/project/
 npm install
 npm install -r ../requirenment.txt
 cd ../../
