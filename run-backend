@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd backend/
+. ./env/bin/activate
+case "$#" in
+0)
+	port=8000
+;;
+1)
+	port=$1
+esac
+cd project/
+python3 manage.py runserver
+cd ../../
