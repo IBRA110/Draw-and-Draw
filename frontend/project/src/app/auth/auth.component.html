@@ -1,0 +1,97 @@
+<div class='form-signUp'>
+	<div class="alert alert-danger" *ngIf="error">
+    <p>{{error}}</p>
+  </div>
+  <div class="alert alert-success" *ngIf="success">
+		<p>{{success}}</p>
+  </div>
+	<form [formGroup]='signupForm' (ngSubmit)='onSignup()' *ngIf='!isLoginMode'>
+		<div class='form'>
+			<label for='username'>User Name</label>
+			<input 
+				type='text' 
+				id='username' 
+				name='username' 
+				class='form-input' 
+				formControlName="username">
+			<span *ngIf="!signupForm.get('username').valid && signupForm.get('username').touched">
+				Field Required!
+			</span>
+		</div>
+		<div class='form'>
+			<label for='email'>Email</label>
+			<input 
+				type='text' 
+				id='email' 
+				name='email' 
+				class='form-input' 
+				formControlName="email" >
+			<span *ngIf="!signupForm.get('email').valid && signupForm.get('email').touched">
+				Please Enter a valid email!
+			</span>
+		</div>
+		<div formGroupName="passwords"> 
+			<div class='form'>
+				<label for='password'>Password</label>
+				<input 
+					type='password' 
+					id='password'
+					name='password'
+					class='form-input'
+					formControlName="password" >
+			<span *ngIf="!signupForm.get('passwords.password').valid && signupForm.get('passwords.password').touched">
+				Field Required!
+			</span>
+			</div>
+			<div class='form'>
+				<label for='confirmpassword'>Confirm Password</label>
+				<input 
+					type='password'
+					id='confirmpassword'
+					name='confirmpassword'
+					class='form-input' 
+					formControlName="confirmpassword">
+			<span *ngIf="!signupForm.get('passwords.confirmpassword').valid && signupForm.get('passwords.confirmpassword').touched">
+        Field Required
+			</span>
+			<span *ngIf="signupForm.get('passwords').errors?.notsame">
+				Passwords must be same!	
+			</span>
+			</div>
+		</div>
+		<div>
+			<button type='submit' [disabled]='!signupForm.valid'>Sign Up</button>
+			<button type='button' (click)="onSwitch()">Switch to Login</button>
+		</div>
+	</form>
+	<form [formGroup]='loginForm' (ngSubmit)='onLogin()' *ngIf='isLoginMode'>
+		<div class='form'>
+			<label for='email'>Email</label>
+			<input 
+				type='text' 
+				id='email' 
+				name='email' 
+				class='form-input' 
+				formControlName="email" >
+			<span *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">
+				Field Required!
+			</span>
+		</div>
+		<div class='form'>
+			<label for='password'>Password</label>
+			<input 
+				type='password' 
+				id='password'
+				name='password'
+				class='form-input' 
+				formControlName="password" >
+			<span *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
+				Field Required!
+			</span>
+		</div>
+    <div>
+      <button type="submit" [disabled]='!loginForm.valid'>Login</button>
+      <button type="button" (click)="onSwitch()">Switch to Sign Up</button>
+    </div>
+	</form>
+</div>

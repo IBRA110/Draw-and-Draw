@@ -1,0 +1,6 @@
+<nav>
+	<ul>
+		<li	*ngIf='!isAuthenticated'><a [routerLink]="['auth']">Sign up</a></li>
+		<li *ngIf='isAuthenticated'><a href='#' (click)='logout()'>Logout</a></li>
+	</ul>
+</nav>
