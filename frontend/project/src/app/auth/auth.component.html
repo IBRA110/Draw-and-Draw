@@ -39,9 +39,13 @@
 					name='password'
 					class='form-input'
 					formControlName="password" >
-			<span *ngIf="!signupForm.get('passwords.password').valid && signupForm.get('passwords.password').touched">
-				Field Required!
-			</span>
+		<div *ngIf="signupForm.get('passwords.password').touched && signupForm.get('passwords.password').invalid">
+			<small *ngIf="signupForm.get('passwords.password').errors.required">Enter Password</small>
+			<small *ngIf="signupForm.get('passwords.password').errors.minlength">
+				Password must be at least {{signupForm.get('passwords.password').errors.minlength.requiredLength}}
+				characters. Now he {{signupForm.get('passwords.password').errors.minlength.actualLength}}
+			</small>
+		</div>
 			</div>
 			<div class='form'>
 				<label for='confirmpassword'>Confirm Password</label>
@@ -51,11 +55,8 @@
 					name='confirmpassword'
 					class='form-input' 
 					formControlName="confirmpassword">
-			<span *ngIf="!signupForm.get('passwords.confirmpassword').valid && signupForm.get('passwords.confirmpassword').touched">
-        Field Required
-			</span>
-			<span *ngIf="signupForm.get('passwords').errors?.notsame">
-				Passwords must be same!	
+			<span *ngIf="signupForm.get('passwords').errors?.notsame && signupForm.get('passwords.confirmpassword').touched">
+				Passwords must be same!
 			</span>
 			</div>
 		</div>
