@@ -11,7 +11,6 @@ const routes: Routes = [
 			{path: '', redirectTo:'/', pathMatch: 'full'},
 			{path: '', component: HomeComponent},
 		]},
-	{path: 'auth', component: AuthComponent}
 ];
 
 @NgModule({

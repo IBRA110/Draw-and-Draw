@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { AuthService } from './auth.service';
 import { AuthResData } from './auth.interfaces';
@@ -24,7 +23,6 @@ export class AuthComponent implements OnInit {
 
 	constructor(
 		private auth: AuthService,
-		private router: Router
 	) { }
 
   ngOnInit(){
@@ -68,8 +66,7 @@ export class AuthComponent implements OnInit {
     this.auth.login(this.loginForm.value)
     .subscribe(
       (data: AuthResData) => {
-        this.token = data.token 
-        this.router.navigate([''])
+        this.token = data.token
 		    this.loginForm.reset()
       },(errorRes)=>{
         this.error=errorRes;
