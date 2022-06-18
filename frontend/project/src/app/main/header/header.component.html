@@ -1,6 +1,13 @@
 <nav>
+	<a class='logo'>LOGO</a>
 	<ul>
-		<li	*ngIf='!isAuthenticated'><a [routerLink]="['auth']">Sign up</a></li>
-		<li *ngIf='isAuthenticated'><a href='#' (click)='logout()'>Logout</a></li>
+		<li><a href='#'>HOME</a></li>
+		<li><a href='#'>PICTURES</a></li>
+		<li><a href='#'>PROFILE</a></li>
+	</ul>
+	<ul>
+		<li	class='signup' *ngIf='!isAuthenticated'><a [routerLink]="['auth']">Sign up</a></li>
+		<li class='logout' *ngIf='isAuthenticated'><a href='#' (click)='logout()'>Logout</a></li>
 	</ul>
 </nav>
+

@@ -1,0 +1,51 @@
+nav{
+	position: fixed;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+	padding: 40px 5%;
+
+	.logo{
+		padding: 12.5px 45px;
+	}
+	ul{
+		display: flex;
+		justify-content: space-between;
+		gap: 40px;
+		
+		.signup{
+			a{
+				background-color: rgb(255,255,255);
+				color: rgb(0,0,0);
+				padding: 12.5px 25px;
+				border-radius: 5px;
+				transition: 300ms ease;
+				box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+										rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+										rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+										rgba(0, 0, 0, 0.06) 0px 2px 1px, 
+										rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+										rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+										rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+			}
+			a:hover{
+				border-radius: 20px;
+			}
+		}
+		.logout{
+			a{
+				padding: 12.5px 25px;
+			}
+		}
+
+		li{
+
+			a{
+				font-size: 18px;
+				font-weight: bold;
+				color: rgb(255,255,255);
+			}
+		}
+	}
+}
