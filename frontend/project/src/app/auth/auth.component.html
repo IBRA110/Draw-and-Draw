@@ -1,8 +1,8 @@
-<div class='form-signUp'>
-	<div class="alert alert-danger" *ngIf="error">
+<div class='forms'>
+	<div class="danger" *ngIf="error">
     <p>{{error}}</p>
   </div>
-  <div class="alert alert-success" *ngIf="success">
+  <div class="success" *ngIf="success">
 		<p>{{success}}</p>
   </div>
 	<form [formGroup]='signupForm' (ngSubmit)='onSignup()' *ngIf='!isLoginMode'>
@@ -30,7 +30,7 @@
 				Please Enter a valid email!
 			</span>
 		</div>
-		<div formGroupName="passwords"> 
+		<div class='passwords' formGroupName="passwords"> 
 			<div class='form'>
 				<label for='password'>Password</label>
 				<input 
@@ -40,11 +40,11 @@
 					class='form-input'
 					formControlName="password" >
 		<div *ngIf="signupForm.get('passwords.password').touched && signupForm.get('passwords.password').invalid">
-			<small *ngIf="signupForm.get('passwords.password').errors.required">Enter Password</small>
-			<small *ngIf="signupForm.get('passwords.password').errors.minlength">
+			<span *ngIf="signupForm.get('passwords.password').errors.required">Enter Password</span>
+			<span *ngIf="signupForm.get('passwords.password').errors.minlength">
 				Password must be at least {{signupForm.get('passwords.password').errors.minlength.requiredLength}}
 				characters. Now he {{signupForm.get('passwords.password').errors.minlength.actualLength}}
-			</small>
+			</span>
 		</div>
 			</div>
 			<div class='form'>
@@ -60,7 +60,7 @@
 			</span>
 			</div>
 		</div>
-		<div>
+		<div class='buttons'>
 			<button type='submit' [disabled]='!signupForm.valid'>Sign Up</button>
 			<button type='button' (click)="onSwitch()">Switch to Login</button>
 		</div>
@@ -90,7 +90,7 @@
 				Field Required!
 			</span>
 		</div>
-    <div>
+    <div class='buttons'>
       <button type="submit" [disabled]='!loginForm.valid'>Login</button>
       <button type="button" (click)="onSwitch()">Switch to Sign Up</button>
     </div>

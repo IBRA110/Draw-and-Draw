@@ -1,13 +1,18 @@
 <nav>
-	<a class='logo'>LOGO</a>
+	<div class='logo'>LOGO
+	</div>
 	<ul>
 		<li><a href='#'>HOME</a></li>
 		<li><a href='#'>PICTURES</a></li>
 		<li><a href='#'>PROFILE</a></li>
 	</ul>
 	<ul>
-		<li	class='signup' *ngIf='!isAuthenticated'><a href='#'>Sign up</a></li>
-		<li class='logout' *ngIf='isAuthenticated'><a href='#' (click)='logout()'>Logout</a></li>
+		<li	class='signup' *ngIf='!isAuthenticated' (click)='popupShow()'>
+			<button>
+				Sign up
+			</button>
+		</li>
+		<li class='logout' *ngIf='isAuthenticated'><button (click)='logout()'>Logout</button></li>
 	</ul>
 </nav>
 

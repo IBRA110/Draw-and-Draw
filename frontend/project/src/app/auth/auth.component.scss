@@ -1,0 +1,77 @@
+.forms{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	translate: -50% -50%;
+	scale: 0;
+	transition: all 300ms ease-in;
+	padding: 20px;
+	background-color: rgb(43, 92, 124);
+	border-radius: 5px;
+	border: solid rgb(114, 119, 122) 1px;
+	
+	.danger{
+		color: rgb(255,255,255);
+	}
+	.success{
+		color: rgb(17, 173, 20);
+	}
+	
+	form, .passwords{
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+
+		.form{
+			display: flex;
+			flex-direction: column;
+			gap: 5px;
+			color: rgb(255,255,255);
+			font-size: 18px;
+
+			input{
+				font-size: 18px;
+				padding: 5px;
+				width: 350px;
+				border-radius: 5px;
+			}
+			span{
+				color: rgb(255,255,255);
+				font-size: 14px;
+			}
+		}
+		.buttons{
+			display: flex;
+			justify-content: space-between;
+			margin-top: 10px;
+
+			button{
+				width: 150px;
+				height: 35px;
+				font-size: 16px;
+				font-weight: 700;
+				border-radius: 20px;
+				box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+										rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+										rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+										rgba(0, 0, 0, 1) 0px 2px 1px, 
+										rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+										rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+										rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+			}
+			button:active{
+				transform: translateY(2px);
+				box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+										rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+										rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+										rgba(0, 0, 0, 0) 0px 2px 1px, 
+										rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+										rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+										rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+			}
+		}
+	}
+}
+.show{
+	scale: 1;
+}
