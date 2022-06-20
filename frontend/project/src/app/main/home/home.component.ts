@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 
 import { HeaderComponent } from '../header/header.component';
 import { AuthService } from '../../auth/auth.service';
@@ -12,8 +11,6 @@ import { AuthService } from '../../auth/auth.service';
 export class HomeComponent implements OnInit {
 	
 	private btn: boolean = false
-	public isAuthenticated: boolean = false
-  private userSub: Subscription
 
 	constructor(
 		public auth: AuthService,

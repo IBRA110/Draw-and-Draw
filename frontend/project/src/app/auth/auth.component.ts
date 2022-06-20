@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
@@ -25,8 +25,9 @@ export class AuthComponent implements OnInit {
   success:string = null;
 
 	constructor(
+		@Inject(DOCUMENT) private document: Document,
 		private auth: AuthService
-	) { }
+	){}
 
   ngOnInit(){
 		this.signupForm = new FormGroup({
@@ -58,7 +59,6 @@ export class AuthComponent implements OnInit {
         this.isLoginMode = true;
         this.success='Signup was successfull';
         this.error = null;
-				// this.home.popupHide()
 				this.signupForm.reset()
       },(errorRes)=>{
         this.error=errorRes;
@@ -71,6 +71,7 @@ export class AuthComponent implements OnInit {
     .subscribe(
       (data: AuthResData) => {
         this.token = data.token
+				this.document.getElementsByClassName('forms')[0].classList.remove('show')
 		    this.loginForm.reset()
       },(errorRes)=>{
         this.error=errorRes;
