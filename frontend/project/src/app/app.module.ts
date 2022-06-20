@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './auth/auth.service';
 import { HomeComponent } from './main/home/home.component';
 import { FooterComponent } from './main/footer/footer.component';
+import { PaintComponent } from './main/paint/paint.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FooterComponent } from './main/footer/footer.component';
     HeaderComponent,
     AuthComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    PaintComponent
   ],
   imports: [
     BrowserModule,

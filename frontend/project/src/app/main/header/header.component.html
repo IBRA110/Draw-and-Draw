@@ -1,18 +1,18 @@
-<nav>
+<nav class='nav'>
 	<div class='logo'>LOGO
 	</div>
 	<ul>
-		<li><a href='#'>HOME</a></li>
+		<li><a [routerLink]="['']">HOME</a></li>
 		<li><a href='#'>PICTURES</a></li>
 		<li><a href='#'>PROFILE</a></li>
 	</ul>
 	<ul>
 		<li	class='signup' *ngIf='!auth.isAuthenticated()' (click)='popupShow()'>
-			<button>
-				Sign up
-			</button>
+			<button>Sign up</button>
 		</li>
-		<li class='logout' *ngIf='auth.isAuthenticated()'><button (click)='logout()'>Logout</button></li>
+		<li class='logout' *ngIf='auth.isAuthenticated()'>
+			<button (click)='logout()'>Logout</button>
+		</li>
 	</ul>
 </nav>
 

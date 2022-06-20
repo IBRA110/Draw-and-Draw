@@ -7,6 +7,7 @@ nav{
 	align-items: center;
 	gap: 50px;
 	padding: 0px 5%;
+	transition: 300ms ease;
 
 	.logo{
 		width: 150px;
@@ -67,7 +68,16 @@ nav{
 				font-size: 18px;
 				font-weight: bold;
 				color: rgb(255,255,255);
+				transition: 300ms ease;
 			}
 		}
 	}
+}
+.paint-nav{
+	position: relative;
+	background-color: rgb(23, 67, 94);
+	box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, 
+							rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, 
+							rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
 }
