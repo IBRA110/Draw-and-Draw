@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DOCUMENT } from '@angular/common';
 
 import { AuthService } from './auth.service';
 import { AuthResData } from './auth.interfaces';
+
+
 
 @Component({
   selector: 'app-auth',
@@ -22,7 +25,7 @@ export class AuthComponent implements OnInit {
   success:string = null;
 
 	constructor(
-		private auth: AuthService,
+		private auth: AuthService
 	) { }
 
   ngOnInit(){
@@ -55,6 +58,7 @@ export class AuthComponent implements OnInit {
         this.isLoginMode = true;
         this.success='Signup was successfull';
         this.error = null;
+				// this.home.popupHide()
 				this.signupForm.reset()
       },(errorRes)=>{
         this.error=errorRes;
@@ -80,4 +84,5 @@ export class AuthComponent implements OnInit {
     }
     return null;
   }
+
 }

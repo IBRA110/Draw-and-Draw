@@ -43,7 +43,6 @@ export class AuthService{
 	}
 
 	private handleError(error: HttpErrorResponse){
-		console.log(error)
     let errormessage = 'An unknown errror occured'
     if(!error.error){
       return throwError(errormessage)
@@ -70,5 +69,8 @@ export class AuthService{
 		this.user.next(null)
 		localStorage.removeItem('user')
 		this.router.navigate([''])
+	}
+	isAuthenticated(){
+		return !!localStorage.getItem('user')
 	}
 }

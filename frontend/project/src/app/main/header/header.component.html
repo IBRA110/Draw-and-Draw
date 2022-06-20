@@ -7,12 +7,12 @@
 		<li><a href='#'>PROFILE</a></li>
 	</ul>
 	<ul>
-		<li	class='signup' *ngIf='!isAuthenticated' (click)='popupShow()'>
+		<li	class='signup' *ngIf='!auth.isAuthenticated()' (click)='popupShow()'>
 			<button>
 				Sign up
 			</button>
 		</li>
-		<li class='logout' *ngIf='isAuthenticated'><button (click)='logout()'>Logout</button></li>
+		<li class='logout' *ngIf='auth.isAuthenticated()'><button (click)='logout()'>Logout</button></li>
 	</ul>
 </nav>
 

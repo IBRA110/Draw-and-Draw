@@ -1,5 +1,5 @@
 <div class='home' (click)='popupHide()'>
-	<button *ngIf='!head.isAuthenticated' (click)='popupShow()'>Let's Draw!</button>
-	<button *ngIf='head.isAuthenticated'>Let's Draw!</button>
+	<button *ngIf='!auth.isAuthenticated()' (click)='popupShow()'>Let's Draw!</button>
+	<button *ngIf='auth.isAuthenticated()'>Let's Draw!</button>
 </div>
 
