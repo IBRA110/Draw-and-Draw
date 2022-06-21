@@ -29,11 +29,11 @@ export class HeaderComponent implements OnInit {
   }
 	
 	ngDoCheck(){
-		if (this.router.url == '/paint'){
-			this.nav[0].classList.add('paint-nav')	
+		if (this.router.url != '/'){
+			this.nav[0].classList.add('tolls-nav')	
 		}
 		else{
-			this.nav[0].classList.remove('paint-nav')
+			this.nav[0].classList.remove('tolls-nav')
 		}
 	}
 	
