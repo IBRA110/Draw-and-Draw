@@ -1,4 +1,7 @@
-<input type='color'>
+<input type='color' #color (change)='canvas.changeColor(color, trans)'>
+<input type='range' #size value="1" (change)='canvas.changeSize(size)'>
+<input type='range' #trans value="100" (change)='canvas.changeColor(color, trans)'>
+<button (click)='canvas.clearSketch()'>Clear</button>
 <div class="sketch-container">
 	<div id="sketch-holder"></div>
 </div>
