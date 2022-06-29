@@ -1,7 +1,16 @@
-<input type='color' #color (change)='canvas.changeColor(color, trans)'>
-<input type='range' #size value="1" (change)='canvas.changeSize(size)'>
-<input type='range' #trans value="100" (change)='canvas.changeColor(color, trans)'>
+<input type='color' #color (change)='canvas.changeColor(color)'>
+<input 
+	type='range'	
+	min="1" 
+	max="100"
+	#size 
+	value="1"
+	(change)='canvas.changeSize(size)'>
 <button (click)='canvas.clearSketch()'>Clear</button>
+<button (click)='canvas.undo()'>Undo</button>
 <div class="sketch-container">
-	<div id="sketch-holder"></div>
+	<div class='canvas' id="sketch-canvas"
+		(mousedown)='canvas.drawStart()'
+		(mouseup)='canvas.drawStop()'>
+	</div>
 </div>

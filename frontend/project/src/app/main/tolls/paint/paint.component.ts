@@ -13,65 +13,67 @@ export class PaintComponent implements OnInit {
   sw = 1;
   c = [];
   strokeColor = 0;
-  
+  restoreArray: any = []
+	index: number = -1
 
 	constructor() { }
 
   ngOnInit() {
     const sketch = s => {
       s.setup = () => {
-        let canvas2 = s.createCanvas(s.windowWidth - 200, s.windowHeight - 200);
+        let canvas2 = s.createCanvas(s.windowWidth - 200, s.windowHeight - 200)
 
-        canvas2.parent('sketch-holder');
+        canvas2.parent('sketch-canvas')
 
-
-        s.strokeWeight(this.sw);
-        this.c[0] = s.color(0, 0, 0);
-        s.stroke(this.c[this.strokeColor]);
+        s.strokeWeight(this.sw)
+        this.c[0] = s.color(0, 0, 0)
+        s.stroke(this.c[this.strokeColor])
       };
 			
-			s.changeColor = (color, trans) => {
-				s.col = this.hexToRgb(color.value)
-				if (trans.value == 100){
-					s.col = s.col.slice(0, s.col.length - 2) + '1' + ')'
-				} else {
-					s.col = s.col.slice(0, s.col.length - 2) + '.' + `${trans.value}` + ')'
-				}
+			s.changeColor = (color) => {
+				s.col = color.value 
 				s.stroke(s.col)	
 			}
+			
 			s.changeSize = (size) => {
-				if (size.value < 1){
-					s.strokeWeight(1)
-					return
-				}
 				s.strokeWeight(size.value)
+				this.sw == size.value
+			}			
+			
+			s.drawStart = () => {
+				s.loop()
+				s.draw = () => {
+					if (s.mouseIsPressed) {
+						if (s.mouseButton === s.LEFT) {
+							s.line(s.mouseX, s.mouseY, s.pmouseX, s.pmouseY);
+						}
+					}
+				}
 			}
+			s.drawStop = () => {
+				s.noLoop()
+				this.restoreArray.push(s.get(0, 0, s.width, s.height))
+				this.index += 1
+			}	
+			
 			s.clearSketch = () => {
 				s.background(255)
+				this.restoreArray = []
+				this.index = -1
 			}
-
-      s.draw = () => {
-        if (s.mouseIsPressed) {
-          if (s.mouseButton === s.LEFT) {
-            s.line(s.mouseX, s.mouseY, s.pmouseX, s.pmouseY);
-          }
-        }
-      };
-    };
-
-    this.canvas = new p5(sketch);
-  }
-	
-	hexToRgb(hex){
-    var c;
-    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-        c= hex.substring(1).split('');
-        if(c.length== 3){
-            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
-        }
-        c= '0x'+c.join('');
-        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
-    }
-    throw new Error('Bad Hex');
-}
+			
+			s.undo = () => {
+				if (this.index <= 0){
+					s.background(255)
+					this.restoreArray = []
+					this.index = -1
+				} else {
+					this.index -= 1
+					this.restoreArray.pop()
+					s.image(this.restoreArray[this.index], 0, 0)
+				}
+			}
+		}
+    this.canvas = new p5(sketch)
+  }	
 }
