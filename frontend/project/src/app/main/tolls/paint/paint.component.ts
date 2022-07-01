@@ -15,6 +15,8 @@ export class PaintComponent implements OnInit {
   strokeColor = 0;
   restoreArray: any = []
 	index: number = -1
+	public paintTools: boolean = false
+	public eraserTool: boolean = false
 
 	constructor() { }
 
@@ -24,12 +26,36 @@ export class PaintComponent implements OnInit {
         let canvas2 = s.createCanvas(s.windowWidth - 200, s.windowHeight - 200)
 
         canvas2.parent('sketch-canvas')
-
+				s.background(255)
         s.strokeWeight(this.sw)
-        this.c[0] = s.color(0, 0, 0)
+        this.c[0] = s.color(101, 101, 102)
         s.stroke(this.c[this.strokeColor])
       };
 			
+			s.pencil = () => {
+				this.paintTools = false
+				this.eraserTool = false
+				s.col = 'rgb(101, 101, 102)'
+				s.stroke(s.col)
+				s.strokeWeight(1)
+				this.sw = 4
+			}
+			s.brush = (color, size) => {
+				this.paintTools = true
+				this.eraserTool = true
+				s.col = color.value 
+				s.stroke(s.col)	
+				s.strokeWeight(size.value)
+				this.sw = size.value
+				this.sw = 4
+			}
+			s.eraser = () => {
+				this.paintTools = false
+				this.eraserTool = true
+				s.col = 'rgb(255, 255, 255)'
+				s.stroke(s.col)
+			}
+
 			s.changeColor = (color) => {
 				s.col = color.value 
 				s.stroke(s.col)	
@@ -37,7 +63,7 @@ export class PaintComponent implements OnInit {
 			
 			s.changeSize = (size) => {
 				s.strokeWeight(size.value)
-				this.sw == size.value
+				this.sw = size.value
 			}			
 			
 			s.drawStart = () => {

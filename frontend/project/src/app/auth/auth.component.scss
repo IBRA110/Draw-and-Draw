@@ -2,11 +2,13 @@
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	translate: -50% -50%;
-	scale: 0;
+	transform: translate(-50%, -50%);
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
 	transition: all 300ms ease-in;
 	padding: 20px;
-	background-color: rgba(43, 92, 124, 1);
+	background-color: rgba(22, 24, 45, 1);
 	border-radius: 5px;
 	border: solid rgb(114, 119, 122) 1px;
 	
@@ -73,5 +75,7 @@
 	}
 }
 .show{
-	scale: 1;
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
 }
