@@ -7,7 +7,7 @@ pip3 install -r requirenment.txt
 cd project/
 python3 manage.py migrate
 cd ../../frontend/project/
-npm install 
-npm install -r ../requirenment.txt
+npm install --legacy-peer-deps 
+npm install -r ../requirenment.txt --legacy-peer-deps
 cd ../../
 
