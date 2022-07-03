@@ -9,21 +9,31 @@
 			<i class="fa-solid fa-paintbrush"></i>
 		</label>
 		<label>
-			<input type="radio" name="paint" (click)='canvas.eraser()'>
+			<input type="radio" name="paint" (click)='canvas.eraser(size)'>
 			<i class="fa-solid fa-eraser"></i>
 		</label>
 		<input 
 			type='color' #color (change)='canvas.changeColor(color)' 
 			[disabled]='!paintTools'>
-		<input 
-			[disabled]='!paintTools && !eraserTool' type='range'	
-			min="1" max="100"
-			#size value="1"
-			(change)='canvas.changeSize(size)'>
+		<div class='input-range'>
+			<input 
+				[(ngModel)]="sw" 
+				[disabled]='!paintTools && !eraserTool' type='range'	
+				min="1" max="100"
+				#size value="1"
+				(change)='canvas.changeSize(size)'>
+			<input 
+				[(ngModel)]="sw" type='text' 
+				[disabled]='!paintTools && !eraserTool'
+				maxlength="2"
+				placeholder='{{ sw }}'
+				#sizeNu
+				(change)='canvas.changeSize(sizeNu)'>
+		</div>
 		<button (click)='canvas.undo()'><i class="fa-solid fa-delete-left"></i></button>
 		<button (click)='canvas.clearSketch()'><i class="fa-solid fa-trash"></i></button>
 		<button><i class="fa-solid fa-floppy-disk"></i></button>
-		<button><i class="fa-solid fa-file-arrow-down"></i></button>
+		<button (click)='canvas.download()'><i class="fa-solid fa-file-arrow-down"></i></button>
 	</div>
 	<div class='canvas' id="sketch-canvas"
 		(mousedown)='canvas.drawStart()'

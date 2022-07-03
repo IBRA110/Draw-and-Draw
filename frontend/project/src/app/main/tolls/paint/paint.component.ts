@@ -9,12 +9,11 @@ import p5 from 'p5';
 export class PaintComponent implements OnInit {
   
 
-	canvas: any;
-  sw = 1;
-  c = [];
-  strokeColor = 0;
-  restoreArray: any = []
-	index: number = -1
+	public canvas: any;
+  public sw: string = '1';
+
+  public restoreArray: any = []
+	public index: number = -1
 	public paintTools: boolean = false
 	public eraserTool: boolean = false
 
@@ -28,8 +27,7 @@ export class PaintComponent implements OnInit {
         canvas2.parent('sketch-canvas')
 				s.background(255)
         s.strokeWeight(this.sw)
-        this.c[0] = s.color(101, 101, 102)
-        s.stroke(this.c[this.strokeColor])
+        s.stroke('rgb(101, 101, 102)')
       };
 			
 			s.pencil = () => {
@@ -38,7 +36,6 @@ export class PaintComponent implements OnInit {
 				s.col = 'rgb(101, 101, 102)'
 				s.stroke(s.col)
 				s.strokeWeight(1)
-				this.sw = 4
 			}
 			s.brush = (color, size) => {
 				this.paintTools = true
@@ -47,21 +44,23 @@ export class PaintComponent implements OnInit {
 				s.stroke(s.col)	
 				s.strokeWeight(size.value)
 				this.sw = size.value
-				this.sw = 4
 			}
-			s.eraser = () => {
+			s.eraser = (size) => {
 				this.paintTools = false
 				this.eraserTool = true
-				s.col = 'rgb(255, 255, 255)'
-				s.stroke(s.col)
+				s.stroke('rgb(255, 255, 255)')
+				s.strokeWeight(size.value)
+				this.sw = size.value
 			}
 
 			s.changeColor = (color) => {
-				s.col = color.value 
-				s.stroke(s.col)	
+				s.stroke(color.value )	
 			}
 			
 			s.changeSize = (size) => {
+				if (size.value == ''){
+					size.value = '1'
+				}
 				s.strokeWeight(size.value)
 				this.sw = size.value
 			}			
@@ -99,7 +98,13 @@ export class PaintComponent implements OnInit {
 					s.image(this.restoreArray[this.index], 0, 0)
 				}
 			}
+			s.download = () => {
+				let name = prompt('Type name');
+				if (name != null){
+					s.save(name + '.png')
+				}
+			}
 		}
     this.canvas = new p5(sketch)
-  }	
+  }
 }

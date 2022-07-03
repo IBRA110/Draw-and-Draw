@@ -1,16 +1,28 @@
 ul{
-	background: red;
+	background-color: rgb(57, 72, 99);
+	box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, 
+							rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, 
+							rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 5px;
+	gap: 10px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 100%;
 	
 	li{
 		button{
 			width: 40px;
 			height: 40px;
-			background-color: yellow;
+			background-color: rgb(255, 255, 255);
+
+			i{
+				color: rgb(18, 61, 92);
+			}
 		}
 	}
 	
