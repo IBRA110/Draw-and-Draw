@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { PaintComponent } from './paint.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
 	declarations: [
@@ -14,7 +15,7 @@ import { PaintComponent } from './paint.component';
 		RouterModule.forChild([
 			{path: '', component: PaintComponent}
 		]),
-
+		IonicModule.forRoot()
   ]
 })
 export class PaintModule { }

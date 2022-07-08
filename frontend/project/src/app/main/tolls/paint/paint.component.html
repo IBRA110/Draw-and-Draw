@@ -1,42 +1,56 @@
 <div class='paint'>
 	<div class='paint-tolls'>
-		<label>
-			<input type="radio" name="paint" checked (click)='canvas.pencil()'>
-			<i class="fa-solid fa-pencil"></i>
-		</label>
-		<label>
-			<input type="radio" name="paint" (click)='canvas.brush(color, size)'>
-			<i class="fa-solid fa-paintbrush"></i>
-		</label>
-		<label>
-			<input type="radio" name="paint" (click)='canvas.eraser(size)'>
-			<i class="fa-solid fa-eraser"></i>
-		</label>
-		<input 
-			type='color' #color (change)='canvas.changeColor(color)' 
-			[disabled]='!paintTools'>
-		<div class='input-range'>
+		<div class='buttons'>
+			<label>
+				<input type="radio" name="paint" checked (click)='canvas.pencil()'>
+				<i class="fa-solid fa-pencil"></i>
+			</label>
+			<label>
+				<input type="radio" name="paint" (click)='canvas.brush(color, size)'>
+				<i class="fa-solid fa-paintbrush"></i>
+			</label>
+			<label>
+				<input type="radio" name="paint" (click)='canvas.eraser(size)'>
+				<i class="fa-solid fa-eraser"></i>
+			</label>
+			<label>
+				<input type="radio" name="paint" (click)='canvas.flowerBrush()'>
+				<ion-icon name="flower"></ion-icon>		
+			</label>
+			<label>
+				<input type="radio" name="paint" (click)='canvas.gressBrush()'>
+				<i class="fa-solid fa-seedling"></i>		
+			</label>
 			<input 
-				[(ngModel)]="sw" 
-				[disabled]='!paintTools && !eraserTool' type='range'	
-				min="1" max="100"
-				#size value="1"
-				(change)='canvas.changeSize(size)'>
-			<input 
-				[(ngModel)]="sw" type='text' 
-				[disabled]='!paintTools && !eraserTool'
-				maxlength="2"
-				placeholder='{{ sw }}'
-				#sizeNu
-				(change)='canvas.changeSize(sizeNu)'>
+				type='color' #color (change)='canvas.changeColor(color)' 
+				[disabled]='!paintToll'>
+			<div class='input-range'>
+				<input 
+					[(ngModel)]="sw" 
+					[disabled]='!paintToll && !eraserToll' type='range'	
+					min="1" max="100"
+					#size value="1"
+					(change)='canvas.changeSize(size)'>
+				<input 
+					[(ngModel)]="sw" type='text' 
+					[disabled]='!paintToll && !eraserToll'
+					maxlength="2"
+					placeholder='{{ sw }}'
+					#sizeNu
+					(change)='canvas.changeSize(sizeNu)'>
+			</div>
 		</div>
-		<button (click)='canvas.undo()'><i class="fa-solid fa-delete-left"></i></button>
-		<button (click)='canvas.clearSketch()'><i class="fa-solid fa-trash"></i></button>
-		<button><i class="fa-solid fa-floppy-disk"></i></button>
-		<button (click)='canvas.download()'><i class="fa-solid fa-file-arrow-down"></i></button>
+		<div class='buttons'>
+			<button (click)='canvas.undo()'><i class="fa-solid fa-delete-left"></i></button>
+			<button (click)='canvas.clearSketch()'><i class="fa-solid fa-trash"></i></button>
+			<button (click)='canvas.download()'><i class="fa-solid fa-file-arrow-down"></i></button>
+			<button><i class="fa-solid fa-floppy-disk"></i></button>
+			<button><i class="fa-solid fa-folder-open"></i></button>
+		</div>
 	</div>
 	<div class='canvas' id="sketch-canvas"
 		(mousedown)='canvas.drawStart()'
 		(mouseup)='canvas.drawStop()'>
 	</div>
 </div>
+
