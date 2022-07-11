@@ -17,13 +17,12 @@ export class PaintComponent implements OnInit {
 	public paintTools: boolean = false
 	public eraserTool: boolean = false
 
-	constructor() { }
+	constructor(){}
 
   ngOnInit() {
     const sketch = s => {
       s.setup = () => {
-        let canvas2 = s.createCanvas(s.windowWidth - 200, s.windowHeight - 200)
-
+        let canvas2 = s.createCanvas(s.windowWidth - 200, s.windowHeight - 150)
         canvas2.parent('sketch-canvas')
 				s.background(255)
         s.strokeWeight(this.sw)
@@ -54,7 +53,7 @@ export class PaintComponent implements OnInit {
 			}
 
 			s.changeColor = (color) => {
-				s.stroke(color.value )	
+				s.stroke(color)	
 			}
 			
 			s.changeSize = (size) => {

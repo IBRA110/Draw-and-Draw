@@ -1,21 +1,31 @@
 <div class='paint'>
 	<div class='paint-tolls'>
-		<label>
-			<input type="radio" name="paint" checked (click)='canvas.pencil()'>
-			<i class="fa-solid fa-pencil"></i>
-		</label>
-		<label>
-			<input type="radio" name="paint" (click)='canvas.brush(color, size)'>
-			<i class="fa-solid fa-paintbrush"></i>
-		</label>
-		<label>
-			<input type="radio" name="paint" (click)='canvas.eraser(size)'>
-			<i class="fa-solid fa-eraser"></i>
-		</label>
-		<input 
-			type='color' #color (change)='canvas.changeColor(color)' 
-			[disabled]='!paintTools'>
+		<div class='radios'>
+			<label>
+				<input type="radio" name="paint" checked (click)='canvas.pencil()'>
+				<i class="fas fa-pencil-alt"></i>	
+			</label>
+			<label>
+				<input type="radio" name="paint" (click)='canvas.brush(color, size)'>
+				<i class="fas fa-paint-brush"></i>
+			</label>
+			<label>
+				<input type="radio" name="paint">
+				<i class="fas fa-spray-can"></i>	
+			</label>
+			<label>
+				<input type="radio" name="paint">
+				<i class="fas fa-paint-roller"></i>	
+			</label>
+			<label>
+				<input type="radio" name="paint" (click)='canvas.eraser(size)'>
+				<i class="fas fa-eraser"></i>	
+			</label>
+		</div>
 		<div class='input-range'>
+			<input 
+				type='color' #color (change)='canvas.changeColor(color.value)' 
+				[disabled]='!paintTools'>
 			<input 
 				[(ngModel)]="sw" 
 				[disabled]='!paintTools && !eraserTool' type='range'	
@@ -30,13 +40,270 @@
 				#sizeNu
 				(change)='canvas.changeSize(sizeNu)'>
 		</div>
-		<button (click)='canvas.undo()'><i class="fa-solid fa-delete-left"></i></button>
-		<button (click)='canvas.clearSketch()'><i class="fa-solid fa-trash"></i></button>
-		<button><i class="fa-solid fa-floppy-disk"></i></button>
-		<button (click)='canvas.download()'><i class="fa-solid fa-file-arrow-down"></i></button>
+		<div class='buttons'>
+			<button (click)='canvas.undo()'><i class="fas fa-backspace"></i></button>
+			<button (click)='canvas.clearSketch()'><i class="fas fa-trash"></i></button>
+			<button><i class="fas fa-save"></i></button>
+			<button (click)='canvas.download()'><i class="fas fa-download"></i></button>
+			<button><i class="fas fa-folder-open"></i></button>
+		</div>
 	</div>
 	<div class='canvas' id="sketch-canvas"
 		(mousedown)='canvas.drawStart()'
 		(mouseup)='canvas.drawStop()'>
 	</div>
+	<ul>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(0, 0, 0)")'
+				style='background-color: rgb(0, 0, 0);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(18, 18, 18)")'
+				style='background-color: rgb(18, 18, 18);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(72, 74, 74)")'
+				style='background-color: rgb(72, 74, 74);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(115, 115, 115)")'
+				style='background-color: rgb(115, 115, 115);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(143, 127, 119)")'
+				style='background-color: rgb(143, 127, 119);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(225, 225, 225)")'
+				style='background-color: rgb(225, 225, 225);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(212, 211, 148)")'
+				style='background-color: rgb(212, 211, 148);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(105, 104, 51)")'
+				style='background-color: rgb(105, 104, 51);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(33, 18, 2)")'
+				style='background-color: rgb(33, 18, 2);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(54, 31, 1)")'
+				style='background-color: rgb(54, 31, 1);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(128, 73, 1)")'
+				style='background-color: rgb(128, 73, 1);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(212, 121, 2)")'
+				style='background-color: rgb(212, 121, 2);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(242, 213, 19)")'
+				style='background-color: rgb(242, 213, 19);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(175, 242, 19)")'
+				style='background-color: rgb(175, 242, 19);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(41, 194, 21)")'
+				style='background-color: rgb(41, 194, 21);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(22, 161, 92)")'
+				style='background-color: rgb(22, 161, 92);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(22, 148, 110)")'
+				style='background-color: rgb(22, 148, 110);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(13, 128, 36)")'
+				style='background-color: rgb(13, 128, 36);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(6, 82, 21)")'
+				style='background-color: rgb(6, 82, 21);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(20, 219, 198)")'
+				style='background-color: rgb(20, 219, 198);'>
+			</button>
+		</li>
+		<li>
+			<button
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(3, 143, 98)")'
+				style='background-color: rgb(3, 143, 98);'>
+			</button>
+		</li>	
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(8, 69, 62)")'
+				style='background-color: rgb(8, 69, 62);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(6, 38, 46)")'
+				style='background-color: rgb(6, 38, 46);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(14, 117, 143)")'
+				style='background-color: rgb(14, 117, 143);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(20, 167, 204)")'
+				style='background-color: rgb(20, 167, 204);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(12, 24, 84)")'
+				style='background-color: rgb(12, 24, 84);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(47, 6, 107)")'
+				style='background-color: rgb(47, 6, 107);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(33, 7, 59)")'
+				style='background-color: rgb(33, 7, 59);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(116, 13, 161)")'
+				style='background-color: rgb(116, 13, 161);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(204, 6, 194)")'
+				style='background-color: rgb(204, 6, 194);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(112, 6, 100)")'
+				style='background-color: rgb(112, 6, 100);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(199, 6, 109)")'
+				style='background-color: rgb(199, 6, 109);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(199, 6, 57)")'
+				style='background-color: rgb(199, 6, 57);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(128, 6, 10)")'
+				style='background-color: rgb(128, 6, 10);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(194, 17, 23)")'
+				style='background-color: rgb(194, 17, 23);'>
+			</button>
+		</li>
+		<li>
+			<button 
+				[disabled]='!paintTools'
+				(click)='canvas.changeColor("rgb(199, 6, 6)")'
+				style='background-color: rgb(199, 6, 6);'>
+			</button>
+		</li>
+	</ul>
 </div>

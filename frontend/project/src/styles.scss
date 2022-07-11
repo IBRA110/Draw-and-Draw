@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 /*Обнуление*/
 *{
 	padding: 0;
@@ -40,19 +39,26 @@ img{vertical-align: top;}
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oxygen:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oxygen:wght@300;700&display=swap'se-color);
+
+$base-color: rgb(2, 17, 33);
+$box-color: rgba(3, 31, 61);
+$cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB40lEQVRYhc3WvUvDQBgG8BcsgpPgUNOmpb26KPhHODipq6urbo6uBR3EwUXtpeAkqBi/a+sHFVRwdIzaVmuL1skPNBdRCvWcUtLaXE17Cb5w8/MjL0/uAP7D+FcLWYRJJihp46Hoa7vjgM6DVFFce6AIE4owUZFE5oNRtdsxgHcnt+s+Vqgo3+sI/ZyjCBkGmbbYCvAs3wXcyatvEwRFmGSDEXXCt/jeYR8illXcxwplICjChCCJRLsw6eUOEOXCoA6og7BvPUL85tkigu96xM38pBFgAUERJp8Iq0vNrSdMXZ2HqWITiObXo1eSA6Kx9RgryQlhfT3GSnJEVKynL0xdpgBxvTBkBuCEoAiTM+ZXEOKZF5sRp0xArUpyQlwgSRthrgAATCvZIKKEsLYXimj97NCqMaukBcQXwupSYIH0WArWh1XJOoinkKRN++c+vA0FVyAYlfyNKKhBiYz5Zmlb08H6VN+SrOPdzq1wCzZO9S1Z8xxdl3zygz0Plr9U0rOTO7ElHADqVzKpUP/WPf9XknFYlfTEsoqt4QDsSgpr+QHbAQC1Kyns3T46Eg5Qu5Liem7UMQAAgJBIl29JIZHWHA0HABC38lPlH89GfsZxAISpS9jPvAmJzBvIl63OAzjPDxRBHm/jXAAIAAAAAElFTkSuQmCC"), auto;
 
 body{
 	font-family: 'Oxygen';
-	background-color: rgb(99, 110, 128);
+	background-color: rgb(0, 3, 10);
+	cursor: $cursor;
 }
+
 button{
+	cursor: $cursor;
 	background-color: rgb(255,255,255);
 	color: rgb(0,0,0);
 	font-size: 18px;
 	font-weight: 700;
-	width: 135px;
-	height: 50px;
+	width: 125px;
+	height: 45px;
 	border-radius: 5px;
 	transition: border-radius 300ms ease;
 	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
