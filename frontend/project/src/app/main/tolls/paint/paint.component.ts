@@ -17,6 +17,8 @@ export class PaintComponent implements OnInit {
 	public paintTools: boolean = false
 	public eraserTool: boolean = false
 
+	private spray: boolean = false
+
 	constructor(){}
 
   ngOnInit() {
@@ -32,21 +34,36 @@ export class PaintComponent implements OnInit {
 			s.pencil = () => {
 				this.paintTools = false
 				this.eraserTool = false
+				this.spray = false
 				s.col = 'rgb(101, 101, 102)'
 				s.stroke(s.col)
 				s.strokeWeight(1)
 			}
+			
 			s.brush = (color, size) => {
 				this.paintTools = true
 				this.eraserTool = true
+				this.spray = false
 				s.col = color.value 
 				s.stroke(s.col)	
 				s.strokeWeight(size.value)
 				this.sw = size.value
 			}
+			
+			s.spray = (color, size) => {
+				this.paintTools = true
+				this.eraserTool = true
+				this.spray = true
+				s.col = color.value 
+				s.stroke(s.col)	
+				s.strokeWeight(size.value)
+				this.sw = size.value
+			}
+			
 			s.eraser = (size) => {
 				this.paintTools = false
 				this.eraserTool = true
+				this.spray = false
 				s.stroke('rgb(255, 255, 255)')
 				s.strokeWeight(size.value)
 				this.sw = size.value
@@ -69,11 +86,23 @@ export class PaintComponent implements OnInit {
 				s.draw = () => {
 					if (s.mouseIsPressed) {
 						if (s.mouseButton === s.LEFT) {
-							s.line(s.mouseX, s.mouseY, s.pmouseX, s.pmouseY);
+							if (this.spray){
+								s.fill(0)
+								s.strokeWeight(1)
+								for (let i = 0; i < +this.sw; i++){
+									let paintX = s.mouseX + (Math.random() * -+this.sw + Math.random() * +this.sw)
+									let paintY = s.mouseY + (Math.random() * -+this.sw + Math.random() * +this.sw)
+									s.point(paintX, paintY)
+
+								}
+							}else{
+								s.line(s.mouseX, s.mouseY, s.pmouseX, s.pmouseY)
+							}
 						}
 					}
 				}
 			}
+			
 			s.drawStop = () => {
 				s.noLoop()
 				this.restoreArray.push(s.get(0, 0, s.width, s.height))
@@ -97,6 +126,7 @@ export class PaintComponent implements OnInit {
 					s.image(this.restoreArray[this.index], 0, 0)
 				}
 			}
+			
 			s.download = () => {
 				let name = prompt('Type name');
 				if (name != null){
