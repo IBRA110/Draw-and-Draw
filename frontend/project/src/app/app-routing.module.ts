@@ -13,7 +13,9 @@ const routes: Routes = [
 			{path: '', component: HomeComponent},
 			{path: 'tolls', loadChildren: () => 
 				import('./main/tolls/tolls.module').then(m => m.TollsModule)},
-		]},
+		]
+	},
+	{path: '**', redirectTo:'/', pathMatch: 'full'}
 ];
 
 @NgModule({

@@ -6,15 +6,15 @@
 				<i class="fas fa-pencil-alt"></i>	
 			</label>
 			<label>
-				<input type="radio" name="paint" (click)='canvas.brush(color, size)'>
+				<input type="radio" name="paint" (click)='canvas.brush(size)'>
 				<i class="fas fa-paint-brush"></i>
 			</label>
 			<label>
-				<input type="radio" name="paint" (click)='canvas.spray(color, size)'>
+				<input type="radio" name="paint" (click)='canvas.spray(size)'>
 				<i class="fas fa-spray-can"></i>	
 			</label>
 			<label>
-				<input type="radio" name="paint">
+				<input type="radio" name="paint" (click)='canvas.rectang(size)'>
 				<i class="fas fa-paint-roller"></i>	
 			</label>
 			<label>
@@ -22,10 +22,19 @@
 				<i class="fas fa-eraser"></i>	
 			</label>
 		</div>
+		<div class='input-name'>
+			<p>Type name</p>
+			<input type='text' class='pic-name' maxlength="10" [(ngModel)]="name">
+		</div>
 		<div class='input-range'>
-			<input 
-				type='color' #color (change)='canvas.changeColor(color.value)' 
-				[disabled]='!paintTools'>
+			<button class='color-picker' style="background: {{ colorBrush }}">
+				<input 
+					type='text' 
+					#color 
+					(colorPickerClose)='canvas.changeColor(colorBrush)' 
+					[(colorPicker)]="colorBrush" 
+					[disabled]='!paintTools'>
+			</button>
 			<input 
 				[(ngModel)]="sw" 
 				[disabled]='!paintTools && !eraserTool' type='range'	
@@ -43,8 +52,8 @@
 		<div class='buttons'>
 			<button (click)='canvas.undo()'><i class="fas fa-backspace"></i></button>
 			<button (click)='canvas.clearSketch()'><i class="fas fa-trash"></i></button>
-			<button><i class="fas fa-save"></i></button>
 			<button (click)='canvas.download()'><i class="fas fa-download"></i></button>
+			<button><i class="fas fa-save"></i></button>
 			<button><i class="fas fa-folder-open"></i></button>
 		</div>
 	</div>
@@ -307,3 +316,4 @@
 		</li>
 	</ul>
 </div>
+

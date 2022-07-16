@@ -16,9 +16,34 @@
 		justify-content: space-between;
 		align-items: center;
 		
+		label{
+			cursor: c.$cursor;
+		}
+		
+		.input-name{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 20px;
+
+			p{
+				color: rgb(255,255,255);
+				font-weight: bold;
+				font-size: 16px;
+			}
+			input{
+				font-size: 16px;
+				padding: 5px;
+				width: 100px;
+				border-radius: 5px;
+				transition: 200ms ease;
+			}
+		}
+		
 		.buttons{
 			display: flex;
 			gap: 25px;
+			
 		}
 		.radios{
 			display: flex;
@@ -29,6 +54,31 @@
 			display: flex;
 			gap: 20px;
 			width: 200px;
+
+
+			.color-picker{
+				position: relative;	
+				width: 30px;
+				height: 30px;
+				box-shadow: rgb(255,255,255) 0px 0px 0px 2px,  
+										rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+				&:hover{
+					border-radius: 5px;
+				}
+				&:active{
+					transform: none;
+					border-radius: 5px;
+				}
+				[type=text]{
+					opacity: 0;
+					border: 2px solid rgba(22, 24, 45, 1);
+					cursor: pointer;
+					
+					&:disabled{
+						cursor: not-allowed;
+					}
+				}
+			}
 
 			[type=range]{
 				cursor: c.$cursor;
@@ -49,18 +99,10 @@
 			}
 		}
 
-		[type=color]{
-			cursor: c.$cursor;
-			width: 30px;
-			height: 30px;
-			border: 2px solid rgba(22, 24, 45, 1);
-			cursor: pointer;
-			&:disabled{
-				cursor: not-allowed;
-			}
-		}
+		
 		[type=radio] { 
 		  position: absolute;
+			cursor: c.$cursor;
 		  opacity: 0;
 		}
 		[type=radio] + i {
@@ -77,6 +119,7 @@
 		}
 
 		[type=radio]:checked + i{
+			cursor: c.$cursor;
 			background-color: rgba(4, 35, 66);
 			color: rgb(255, 255, 255);
 			border: solid 1px rgb(255,255,255);
@@ -86,6 +129,7 @@
 
 		}
 		button{
+			position: relative;
 			height: 35px;
 			width: 35px;
 			color: c.$base-color;
@@ -136,4 +180,6 @@
 		}
 	}
 }
-
+.req{
+  box-shadow: c.$red 3px 3px 6px 0px inset, c.$red -3px -3px 6px 1px inset; 
+}

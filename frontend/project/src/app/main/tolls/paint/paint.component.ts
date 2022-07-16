@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+
 import p5 from 'p5';
 
 @Component({
@@ -11,15 +13,24 @@ export class PaintComponent implements OnInit {
 
 	public canvas: any;
   public sw: string = '1';
-
+	
   public restoreArray: any = []
 	public index: number = -1
 	public paintTools: boolean = false
 	public eraserTool: boolean = false
+	public colorBrush: string = 'rgb(0,0,0)'
+	
+	public name: string
+	private picName: any
 
 	private spray: boolean = false
+	private rect: boolean = false
 
-	constructor(){}
+	constructor(
+		@Inject(DOCUMENT) private document: Document
+	){
+		this.picName = this.document.getElementsByClassName('pic-name')
+	}
 
   ngOnInit() {
     const sketch = s => {
@@ -35,27 +46,37 @@ export class PaintComponent implements OnInit {
 				this.paintTools = false
 				this.eraserTool = false
 				this.spray = false
-				s.col = 'rgb(101, 101, 102)'
-				s.stroke(s.col)
+				this.rect = false
+				s.stroke('rgb(101, 101, 102)')
 				s.strokeWeight(1)
 			}
 			
-			s.brush = (color, size) => {
+			s.brush = (size) => {
 				this.paintTools = true
 				this.eraserTool = true
 				this.spray = false
-				s.col = color.value 
-				s.stroke(s.col)	
+				this.rect = false
+				s.stroke(this.colorBrush)	
 				s.strokeWeight(size.value)
 				this.sw = size.value
 			}
 			
-			s.spray = (color, size) => {
+			s.spray = (size) => {
 				this.paintTools = true
 				this.eraserTool = true
 				this.spray = true
-				s.col = color.value 
-				s.stroke(s.col)	
+				this.rect = false
+				s.stroke(this.colorBrush)	
+				s.strokeWeight(size.value)
+				this.sw = size.value
+			}
+			s.rectang = (size) => {
+				this.paintTools = true
+				this.eraserTool = true
+				this.spray = false
+				this.rect = true
+				console.log('s')
+				s.stroke(this.colorBrush)	
 				s.strokeWeight(size.value)
 				this.sw = size.value
 			}
@@ -64,12 +85,14 @@ export class PaintComponent implements OnInit {
 				this.paintTools = false
 				this.eraserTool = true
 				this.spray = false
+				this.rect = false
 				s.stroke('rgb(255, 255, 255)')
 				s.strokeWeight(size.value)
 				this.sw = size.value
 			}
 
 			s.changeColor = (color) => {
+				this.colorBrush = color
 				s.stroke(color)	
 			}
 			
@@ -93,8 +116,9 @@ export class PaintComponent implements OnInit {
 									let paintX = s.mouseX + (Math.random() * -+this.sw + Math.random() * +this.sw)
 									let paintY = s.mouseY + (Math.random() * -+this.sw + Math.random() * +this.sw)
 									s.point(paintX, paintY)
-
 								}
+							}else if(this.rect){
+								s.rect(s.mouseX - +this.sw / 2, s.mouseY - +this.sw / 2, this.sw, this.sw);	
 							}else{
 								s.line(s.mouseX, s.mouseY, s.pmouseX, s.pmouseY)
 							}
@@ -128,12 +152,20 @@ export class PaintComponent implements OnInit {
 			}
 			
 			s.download = () => {
-				let name = prompt('Type name');
-				if (name != null){
-					s.save(name + '.png')
+				if (this.name != null && this.name != ''){
+					s.save(this.name + '.png')
+				}else{
+					this.picName[0].classList.add('req')
+					setTimeout(() => {
+						this.picName[0].classList.remove('req')
+					}, 5000);
 				}
 			}
 		}
     this.canvas = new p5(sketch)
   }
+	
+	closePopup(){
+
+	}
 }
