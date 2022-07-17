@@ -17,7 +17,6 @@ import { ColorPickerModule } from 'ngx-color-picker';
 		RouterModule.forChild([
 			{path: '', component: PaintComponent}
 		]),
-
   ]
 })
 export class PaintModule { }

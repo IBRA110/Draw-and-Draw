@@ -2,8 +2,18 @@
 	<div class='logo'><img src='../../../assets/logo.png'></div>
 	<ul>
 		<li><a [routerLink]="['']">HOME</a></li>
-		<li><a href='#'>PICTURES</a></li>
-		<li><a href='#'>PROFILE</a></li>
+		<li *ngIf='!auth.isAuthenticated()' (click)='popupShow()'>
+			<a [routerLink]="['#']">PICTURES</a>
+		</li>
+		<li *ngIf='auth.isAuthenticated()'>
+			<a [routerLink]="['pictures']">PICTURES</a>
+		</li>
+		<li *ngIf='!auth.isAuthenticated()' (click)='popupShow()'>
+			<a [routerLink]="['#']">PROFILE</a>
+		</li>
+		<li *ngIf='auth.isAuthenticated()'>
+			<a [routerLink]="['profile']">PROFILE</a>
+		</li>
 	</ul>
 	<ul>
 		<li	class='signup' *ngIf='!auth.isAuthenticated()' (click)='popupShow()'>

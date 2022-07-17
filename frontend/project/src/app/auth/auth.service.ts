@@ -17,14 +17,14 @@ export class AuthService{
 	){}
 	
 	signup(account: signupModel){
-		return this.http.post<AuthResData>('http://localhost:8000/api/v1/registration/',account)
+		return this.http.post<AuthResData>('http://localhost:8000/api/v1/user/registration/',account)
 			.pipe(catchError(this.handleError),tap((res)=>{
 				console.log(res)
 		}))
 	}
 	
 	login(account: loginModel){
-		return this.http.post<AuthResData>('http://localhost:8000/api/v1/login/', account)
+		return this.http.post<AuthResData>('http://localhost:8000/api/v1/user/login/', account)
 			.pipe(catchError(this.handleError),tap((res)=>{
 				this.handleAuth(res);	
 		}))

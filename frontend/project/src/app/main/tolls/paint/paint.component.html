@@ -23,7 +23,8 @@
 			</label>
 		</div>
 		<div class='input-name'>
-			<p>Type name</p>
+			<p *ngIf="!name">Type name</p>
+			<p *ngIf="name">Name</p>
 			<input type='text' class='pic-name' maxlength="10" [(ngModel)]="name">
 		</div>
 		<div class='input-range'>
@@ -53,7 +54,7 @@
 			<button (click)='canvas.undo()'><i class="fas fa-backspace"></i></button>
 			<button (click)='canvas.clearSketch()'><i class="fas fa-trash"></i></button>
 			<button (click)='canvas.download()'><i class="fas fa-download"></i></button>
-			<button><i class="fas fa-save"></i></button>
+			<button (click)='canvas.upload()'><i class="fas fa-save"></i></button>
 			<button><i class="fas fa-folder-open"></i></button>
 		</div>
 	</div>

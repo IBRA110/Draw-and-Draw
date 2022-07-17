@@ -4,13 +4,13 @@ import { RouterModule } from '@angular/router';
 
 import { TollsComponent } from './tolls.component';
 import { TollsBarComponent } from './tolls-bar/tolls-bar.component';
-
+import { AuthGuard } from '../../auth/auth.guard';
 
 
 @NgModule({
 	declarations: [
     TollsComponent,
-		TollsBarComponent
+		TollsBarComponent,
 	],
   imports: [
     CommonModule,
@@ -18,7 +18,11 @@ import { TollsBarComponent } from './tolls-bar/tolls-bar.component';
 			{path: '', component: TollsComponent, children: [
 				{path: '', redirectTo: '/tolls/paint', pathMatch: 'full'},
 				{path: 'paint', loadChildren: () => 
-					import('./paint/paint.module').then(m => m.PaintModule)}
+					import('./paint/paint.module').then(m => m.PaintModule),
+					canLoad: [AuthGuard]},
+				{path: 'chess', loadChildren: () => 
+					import('./chess/chess.module').then(m => m.ChessModule),
+					canLoad: [AuthGuard]}
 			]}
 		]),
   ]

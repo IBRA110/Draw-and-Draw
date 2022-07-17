@@ -161,11 +161,13 @@ export class PaintComponent implements OnInit {
 					}, 5000);
 				}
 			}
+			s.upload = () => {
+				console.log(this.restoreArray[this.index])
+				console.log(typeof(this.restoreArray[this.index]))
+				let obj = JSON.parse('{ "myString": "string", "myNumber": 4 }');
+				console.log(typeof(obj))
+			}
 		}
     this.canvas = new p5(sketch)
   }
-	
-	closePopup(){
-
-	}
 }
