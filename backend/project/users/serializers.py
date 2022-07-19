@@ -28,5 +28,8 @@ class AuthTokenSerializer(serializers.Serializer):
         )
         if not user:
             raise serializers.ValidationError("Invalid User Credentials")
-        attrs['user'] =user
+        attrs['user'] = user
         return attrs
+    
+
+
