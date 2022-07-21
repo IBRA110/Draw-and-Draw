@@ -1,0 +1,35 @@
+.home{
+	height: 100%;
+//	background-image: url(../../../assets/background/background1.jpg);
+//	background-repeat: no-repeat;
+//	background-size: cover;
+//	background-position: center-top;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+
+	button{
+		font-size: 24px;
+		font-weight: bold;
+		width: 200px;
+		height: 70px;	
+		color: rgb(255,255,255);
+		background: rgb(26,42,108);
+		background: 
+		-moz-linear-gradient(45deg, rgba(26,42,108,1) 0%, 
+			rgba(178,31,31,1) 50%, rgba(253,187,45,1) 100%);
+		background: 
+			-webkit-linear-gradient(45deg, rgba(26,42,108,1) 0%,
+				rgba(178,31,31,1) 50%,rgba(253,187,45,1) 100%); 
+		background: 
+			linear-gradient(45deg, rgba(26,42,108,1) 0%,
+				rgba(178,31,31,1) 50%,rgba(253,187,45,1) 100%); 
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a2a6c', 
+			endColorstr='#fdbb2d',GradientType=1 );
+
+		&:hover{
+			box-shadow: rgba(255, 255, 255, 0.56) 0px 0px 20px 0px;
+		}
+	}
+}

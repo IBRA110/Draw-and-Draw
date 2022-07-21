@@ -41,6 +41,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oxygen:wght@300;700&display=swap'se-color);
 
+$background-color: rgb(0,3,10);
 $base-color: rgb(2, 17, 33);
 $box-color: rgba(3, 31, 61);
 $red: rgb(235, 106, 77);
@@ -48,8 +49,8 @@ $cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0
 
 body{
 	font-family: 'Oxygen';
-	background-color: rgb(0, 3, 10);
 	cursor: $cursor;
+	background: rgb(0,3,10);
 }
 
 button{
@@ -69,25 +70,25 @@ button{
 							rgba(0, 0, 0, 0.09) 0px 4px 2px, 
 							rgba(0, 0, 0, 0.09) 0px 8px 4px, 
 							rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-button:hover{
-	border-radius: 20px;
-	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
-							rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
-							rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
-							rgba(0, 0, 0, 1) 0px 2px 1px, 
-							rgba(0, 0, 0, 0.09) 0px 4px 2px, 
-							rgba(0, 0, 0, 0.09) 0px 8px 4px, 
-							rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-button:active{
-	transform: translateY(2px);
-	box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
-							rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
-							rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
-							rgba(0, 0, 0, 0) 0px 2px 1px, 
-							rgba(0, 0, 0, 0.09) 0px 4px 2px, 
-							rgba(0, 0, 0, 0.09) 0px 8px 4px, 
-							rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
 
+	&:hover{
+		border-radius: 20px;
+		box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+								rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+								rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+								rgba(0, 0, 0, 1) 0px 2px 1px, 
+								rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+								rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+								rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+	}
+	&:active{
+		transform: translateY(2px);
+		box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, 
+								rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, 
+								rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, 
+								rgba(0, 0, 0, 0) 0px 2px 1px, 
+								rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+								rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+								rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+	}
+}

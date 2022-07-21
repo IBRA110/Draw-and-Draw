@@ -7,9 +7,14 @@ class SavesSerializer(serializers.Serializer):
     file = serializers.CharField()
     time_create = serializers.DateTimeField(read_only=True)
     time_update = serializers.DateTimeField(read_only=True)
-    parent = serializers.EmailField(source='User.email', read_only=True)
+    parent = serializers.IntegerField()
+    
+    class Meta:
+        model = Saves
+        fields = '__all__'
 
-    def create(self, validated_data):
+    def create(self, validated_data): 
+        print(validated_data)
         return Saves.objects.create(**validated_data)
 
     def update(self, instance, validated_data):

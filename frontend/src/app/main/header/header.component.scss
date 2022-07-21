@@ -1,0 +1,94 @@
+@use 'src/styles' as c;
+nav{
+	position: fixed;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 50px;
+	padding: 0px 5%;
+	transition: 300ms ease;
+	background-color: c.$background-color;
+	box-shadow: c.$box-color 0px 0px 0px 2px, 
+							c.$box-color 0px 4px 6px -1px, 
+							rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+
+	.logo{
+		width: 150px;
+		height: 50px;
+		
+		img{
+			height: 100%;
+			object-fit: fill;
+		}
+	}
+
+	ul{
+		display: flex;
+		justify-content: space-between;
+		gap: 40px;
+	
+		.signup{
+			button{
+				color: rgb(255,255,255);
+				background: rgb(26,42,108);
+				background: 
+					-moz-linear-gradient(45deg, rgba(26,42,108,1) 0%, 
+						rgba(178,31,31,1) 50%, rgba(253,187,45,1) 100%);
+				background: 
+					-webkit-linear-gradient(45deg, rgba(26,42,108,1) 0%,
+						rgba(178,31,31,1) 50%,rgba(253,187,45,1) 100%); 
+				background: 
+					linear-gradient(45deg, rgba(26,42,108,1) 0%,
+						rgba(178,31,31,1) 50%,rgba(253,187,45,1) 100%); 
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a2a6c', 
+					endColorstr='#fdbb2d',GradientType=1 );
+
+				&:hover{
+					box-shadow: rgba(255, 255, 255, 0.56) 0px 0px 20px 0px;
+				}
+			}
+		}
+		
+		.logout{
+			button{
+				color: rgb(255, 255, 255);
+				background: rgb(240,0,0);
+				background: 
+					-moz-linear-gradient(45deg, rgba(240,0,0,1) 0%, 
+						rgba(220,40,30,1) 100%);
+				background: 
+					-webkit-linear-gradient(45deg, rgba(240,0,0,1) 0%,
+						rgba(220,40,30,1) 100%);
+				background: 
+					linear-gradient(45deg, rgba(240,0,0,1) 0%,rgba(220,40,30,1) 100%);
+				filter: 
+					progid:DXImageTransform.Microsoft.gradient( 
+						startColorstr='#f00000', endColorstr='#dc281e',GradientType=1 );
+
+				&:hover{
+					box-shadow: rgba(255, 255, 255, 0.56) 0px 0px 20px 0px;
+				}
+			}
+		}
+		li{
+
+			a{
+				cursor: c.$cursor;
+				font-size: 18px;
+				font-weight: bold;
+				color: rgb(255,255,255);
+				transition: 300ms ease;
+
+				&:hover{
+					color: rgb(0, 139, 200);
+				}
+			}
+		}
+	}
+}
+.tolls-nav{
+	position: relative;
+	background-color: c.$base-color;
+}

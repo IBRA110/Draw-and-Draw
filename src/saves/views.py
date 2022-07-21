@@ -14,7 +14,8 @@ class SavesAPIView(APIView):
         return Response({'saves': SavesSerializer(w, many=True).data})
 
     def post(self, request):
-        request.data['parent'] = User.objects.get(email__exact=request.data['parent'])
+        #request.data['parent'] = User.objects.get(email__exact=request.data['parent']) 
+        #request.data['parent']=request.data['parent'].id
         serializer = SavesSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
